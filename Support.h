@@ -28,8 +28,8 @@ public:
 
 class MessageManager {
 	sf::RenderWindow* _window;
-	sf::Text* _FPS;
-	sf::Text* _FIRE;
+	sf::Text* _fps;
+	sf::Text* _fire;
 	sf::Font font;
 public:
 	enum class MessageType :uint8_t {

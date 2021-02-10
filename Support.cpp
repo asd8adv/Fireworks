@@ -29,13 +29,13 @@ int32_t Support::getRandomNumber(int32_t lower, int32_t upper) {
 MessageManager::MessageManager(sf::RenderWindow& window) :_window(&window) {
 	font.loadFromFile("Resources/raleway.ttf");
 
-	_FPS = new sf::Text("-", font, 20);
-	_FPS->setStyle(sf::Text::Bold);
-	_FPS->setPosition(10, 10);
+	_fps = new sf::Text("-", font, 20);
+	_fps->setStyle(sf::Text::Bold);
+	_fps->setPosition(10, 10);
 
-	_FIRE = new sf::Text("-", font, 20);
-	_FIRE->setStyle(sf::Text::Bold);
-	_FIRE->setPosition(10, 30);
+	_fire = new sf::Text("-", font, 20);
+	_fire->setStyle(sf::Text::Bold);
+	_fire->setPosition(10, 30);
 }
 
 void MessageManager::messageChange(MessageType mes, const std::string& newValue) {
@@ -45,12 +45,12 @@ void MessageManager::messageChange(MessageType mes, const std::string& newValue)
 	case MessageType::FPS:
 		result = "FPS : ";
 		result += newValue;
-		_FPS->setString(result);
+		_fps->setString(result);
 		break;
 	case MessageType::FIREWORKS:
 		result = "fireworks count : ";
 		result += newValue;
-		_FIRE->setString(result);
+		_fire->setString(result);
 		break;
 	default:
 		break;
@@ -58,6 +58,6 @@ void MessageManager::messageChange(MessageType mes, const std::string& newValue)
 }
 
 void MessageManager::draw() {
-	_window->draw(*_FPS);
-	_window->draw(*_FIRE);
+	_window->draw(*_fps);
+	_window->draw(*_fire);
 }
