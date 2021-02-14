@@ -12,8 +12,8 @@ inline constexpr auto g = 9.8;
 inline constexpr auto QU = 1.3;
 inline constexpr auto QR = 5;
 inline constexpr auto QG = 6;
-inline constexpr auto FLARE_TAIL = 12;
-inline constexpr auto FLARE_QTY = 12;
+inline constexpr auto FLARE_TAIL = 16;
+inline constexpr auto FLARE_QTY = 16;
 
 static sf::Vector2f operator*(const sf::Vector2i& v, float f) {
 	sf::Vector2f vec;
@@ -85,9 +85,9 @@ protected:
 
 class FireworksManager {
 	std::deque<Fireworks> _fireworks;
-	sf::RenderWindow* _window;
+	std::shared_ptr<sf::RenderWindow> _window;
 public:
-	FireworksManager(sf::RenderWindow& window):_window(&window) 
+	FireworksManager(std::shared_ptr<sf::RenderWindow> window):_window(window)
 	{}
 	
 	void draw();

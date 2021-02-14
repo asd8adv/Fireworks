@@ -26,14 +26,14 @@ int32_t Support::getRandomNumber(int32_t lower, int32_t upper) {
 *** class MessageManager ***
 ********************/
 
-MessageManager::MessageManager(sf::RenderWindow& window) :_window(&window) {
+MessageManager::MessageManager(std::shared_ptr<sf::RenderWindow> window) :_window(window) {
 	font.loadFromFile("Resources/raleway.ttf");
 
-	_fps = new sf::Text("-", font, 20);
+	_fps = std::make_unique<sf::Text>( std::move(sf::Text("-", font, 20)));
 	_fps->setStyle(sf::Text::Bold);
 	_fps->setPosition(10, 10);
 
-	_fire = new sf::Text("-", font, 20);
+	_fire = std::make_unique<sf::Text>(std::move(sf::Text("-", font, 20)));
 	_fire->setStyle(sf::Text::Bold);
 	_fire->setPosition(10, 30);
 }

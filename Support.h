@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <random>
+#include <memory>
+
 
 
 enum class colors :uint8_t {
@@ -27,16 +29,17 @@ public:
 
 
 class MessageManager {
-	sf::RenderWindow* _window;
-	sf::Text* _fps;
-	sf::Text* _fire;
+	std::shared_ptr<sf::RenderWindow> _window;
+	std::unique_ptr<sf::Text> _fps;
+	std::unique_ptr<sf::Text> _fire;
 	sf::Font font;
 public:
 	enum class MessageType :uint8_t {
 		FPS,
 		FIREWORKS
 	};
-	MessageManager(sf::RenderWindow& window);
+public:
+	MessageManager(std::shared_ptr<sf::RenderWindow> window);
 
 	void messageChange(MessageType mes, const std::string& newValue);
 
